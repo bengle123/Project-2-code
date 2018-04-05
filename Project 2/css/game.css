@@ -5,7 +5,8 @@
 .lava          { background: red;     }
 .wall          { background: green;   }
 .cloud         { background: grey;    }
-.SuperJump     { background: orange;  }
+.SuperJump     { background-image: url("SuperJumpCoin.gif_c200");
+                 background-size: 12px 12px;  }
 
 .actor  { position: absolute;  }
 .coin   { background-image: url("coin.gif");

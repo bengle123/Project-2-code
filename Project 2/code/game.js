@@ -42,6 +42,8 @@ function Level(plan) {
         fieldType = "lava";
         else if (ch == "y")
             fieldType = "cloud"
+            else if (ch == "^")
+              fieldType = "SuperJump"
 
 
       // "Push" the fieldType, which is a string, onto the gridLine array (at the end).
@@ -100,7 +102,7 @@ function SuperJump(pos) {
   // Make it go back and forth in a sine wave.
   this.wobble = Math.random() * Math.PI * 2;
 }
-Coin.prototype.type = "SuperJump";
+SuperJump.prototype.type = "SuperJump";
 
 // Lava is initialized based on the character, but otherwise has a
 // size and position
@@ -382,7 +384,14 @@ Level.prototype.playerTouched = function(type, actor) {
   if (type == "lava" && this.status == null) {
     this.status = "lost";
     this.finishDelay = 1;
-  } else if (type == "coin") {
+  }
+else if (type == "SuperJump") {
+  this.actors = this.actors.filter(function(other){
+    return other != actor;
+    jumpSpeed: 40
+  });
+}
+  else if (type == "coin") {
     this.actors = this.actors.filter(function(other) {
       return other != actor;
     });
