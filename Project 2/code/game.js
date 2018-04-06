@@ -381,6 +381,10 @@ Level.prototype.playerTouched = function(type, actor) {
 
   // if the player touches lava and the player hasn't won
   // Player loses
+  if (type == "SuperJump")
+    jumpSpeed = 45
+    timeLength = 2
+
   if (type == "lava" && this.status == null) {
     this.status = "lost";
     this.finishDelay = 1;
@@ -388,7 +392,7 @@ Level.prototype.playerTouched = function(type, actor) {
 else if (type == "SuperJump") {
   this.actors = this.actors.filter(function(other){
     return other != actor;
-    jumpSpeed: 40
+
   });
 }
   else if (type == "coin") {
@@ -485,5 +489,5 @@ function runGame(plans, Display) {
         console.log("You win!");
     });
   }
-  startLevel(2);
+  startLevel(0);
 }
